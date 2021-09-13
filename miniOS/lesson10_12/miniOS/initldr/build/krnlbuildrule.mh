@@ -1,0 +1,23 @@
+CCSTR		= 	'CC -[M] compiling... '$<
+PRINTCSTR 	=	@echo $(CCSTR) 
+
+%.o : $(CCBUILDPATH)%.asm
+	$(ASM) $(ASMBFLAGS) -o $@ $<
+	@echo 'AS -[M] asembling...' $<
+%.o : $(CCBUILDPATH)%.c
+	$(CC) $(BTCFLAGS) -o $@ $<
+	$(PRINTCSTR) 
+%.lds : $(CCBUILDPATH)%.S
+	$(CC) $(CPPFLGSLDS) -o $@ $<
+	$(PRINTCSTR)
+
+%.mh : $(CCBUILDPATH)%.S
+	$(CC) $(CPPFLGSLDS) -o $@ $<
+	$(PRINTCSTR)
+
+%.lib : $(CCBUILDPATH)%.c
+	$(CC) $(CFLAGS) -o $@ $<
+	$(PRINTCSTR)
+%.lib : $(CCBUILDPATH)%.asm
+	$(ASM) $(ASMKFLAGS) -o $@ $<
+	@echo 'AS -[M] linking...' $< 
