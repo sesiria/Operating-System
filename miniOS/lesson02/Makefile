@@ -19,7 +19,7 @@ OJCYFLAGS	= -S -O binary
 MINIOS_OBJS :=
 MINIOS_OBJS += entry.o main.o vgastr.o
 MINIOS_ELF   = miniOS.elf
-MINIOS_BIN   = Cosmos.bin
+MINIOS_BIN   = miniOS.bin
 
 .PHONY : build clean all link bin
 

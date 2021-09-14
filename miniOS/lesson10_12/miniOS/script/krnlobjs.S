@@ -1,4 +1,4 @@
-#include "config.h"
+//#include "config.h"
 //#include "platform_t.h"
 #include "buildfile.h"
 BUILD_MK_BOOT_OBJS :=

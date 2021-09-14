@@ -1,9 +1,13 @@
-CCSTR		= 	'CC -[M] compiling... '$<
+###################################################################
+#		krnlbuidrule Makefile		  							  #
+###################################################################
+
+CCSTR		= 	'CC -[M] Building... '$<
 PRINTCSTR 	=	@echo $(CCSTR) 
 
 %.o : $(CCBUILDPATH)%.asm
 	$(ASM) $(ASMBFLAGS) -o $@ $<
-	@echo 'AS -[M] asembling...' $<
+	@echo 'AS -[M] Assembling...' $<
 %.o : $(CCBUILDPATH)%.c
 	$(CC) $(BTCFLAGS) -o $@ $<
 	$(PRINTCSTR) 
@@ -20,4 +24,4 @@ PRINTCSTR 	=	@echo $(CCSTR)
 	$(PRINTCSTR)
 %.lib : $(CCBUILDPATH)%.asm
 	$(ASM) $(ASMKFLAGS) -o $@ $<
-	@echo 'AS -[M] linking...' $< 
+	@echo 'AS -[M] Building...' $< 

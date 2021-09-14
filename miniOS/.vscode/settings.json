@@ -16,6 +16,8 @@
         "ostream": "c",
         "stdexcept": "c",
         "streambuf": "c",
-        "functional": "c"
+        "functional": "c",
+        "cosmostypes.h": "c",
+        "cosmosmctrl.h": "c"
     }
 }

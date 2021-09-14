@@ -1,4 +1,4 @@
-include krnlbuildcmd.mh
+include krnlbuidcmd.mh
 include ldrobjs.mh
 .PHONY : all everything build_kernel
 all: build_kernel 
@@ -15,10 +15,10 @@ $(INITLDRSVE_ELF): $(INITLDRSVE_LINK)
 	$(LD) $(LDRSVELDFLAGS) -o $@ $(INITLDRSVE_LINK)
 $(INITLDRIMH):$(INITLDRIMH_ELF)
 	$(OBJCOPY) $(OJCYFLAGS) $< $@
-	@echo 'OBJCOPY -[M] building...' $@  
+	@echo 'OBJCOPY -[M] Building initldrimh.bin...' $@  
 $(INITLDRKRL):$(INITLDRKRL_ELF)
 	$(OBJCOPY) $(OJCYFLAGS) $< $@
-	@echo 'OBJCOPY -[M] building...' $@ 
+	@echo 'OBJCOPY -[M] Building initldrkrl.bin...' $@ 
 $(INITLDRSVE):$(INITLDRSVE_ELF)
 	$(OBJCOPY) $(OJCYFLAGS) $< $@
-	@echo 'OBJCOPY -[M] building...' $@ 
+	@echo 'OBJCOPY -[M] Building initldrsve.bin...' $@ 

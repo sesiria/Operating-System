@@ -1,6 +1,5 @@
 ###################################################################
-#		主控自动化编译配置文件 Makefile			                      #
-#				彭东                                               #
+#		miniOS main control Makefile	 	                       #
 ###################################################################
 
 MAKEFLAGS = -sR
@@ -28,7 +27,7 @@ IMGSECTNR = 204800
 PHYDSK = /dev/sdb
 VDIFNAME = hd.vdi
 VMDKFNAME = hd.img
-KRNLEXCIMG = Cosmos.bin
+KRNLEXCIMG = miniOS.bin
 
 LOGOFILE = logo.bmp background.bmp
 FONTFILE = font.fnt
@@ -40,7 +39,7 @@ INITLDR_BUILD_PATH =./initldr/build/
 INITLDR_PATH =./initldr/
 CPLILDR_PATH =./release/
 INSTALL_PATH =/boot/
-INSTALLSRCFILE_PATH =./release/Cosmos.eki
+INSTALLSRCFILE_PATH =./release/miniOS.eki
 SRCFILE = $(BOOTEXCIMG) $(KRNLEXCIMG) $(LDEREXCIMG) $(SHELEXCIMG)
 RSRCFILE = $(BOOTEXCIMG) $(KRNLEXCIMG) $(LDEREXCIMG) $(SHELEXCIMG) #$(VDIFNAME) $(VMDKFNAME)
 
@@ -57,17 +56,17 @@ build: clean print all
 
 all:
 	$(MAKE) $(X86BARD)
-	@echo '恭喜我，系统编译构建完成！ ^_^'
+	@echo 'Congratulation! Build complete! ^_^'
 clean:
 	$(RM) -f hd.img
 	$(CD) $(INITLDR_PATH); $(MAKE) clean
 	$(CD) $(BUILD_PATH); $(RM) -f *.o *.bin *.i *.krnl *.s *.map *.lib *.btoj *.vdi *.elf *vmdk *.lds *.mk *.mki krnlobjs.mh
 	$(CD) $(EXKNL_PATH); $(RM) -f *.o *.bin *.i *.krnl *.s *.map *.lib *.btoj *.vdi *.elf *vmdk *.lds *.mk *.mki krnlobjs.mh
 	$(CD) $(CPLILDR_PATH); $(RM) -f *.o *.bin *.i *.krnl *.s *.eki *.map *.lib *.btoj *.elf *.vdi *vmdk *.lds *.mk *.mki krnlobjs.mh
-	@echo 'Cosmos:清理全部已构建文件... ^_^'
+	@echo 'miniOS:Clean files complete!... ^_^'
 
 print:
-	@echo '*********正在开始编译构建系统*************'
+	@echo '*********Start Build the System*************'
 
 
 krnlexc: cpkrnl wrimg exc
@@ -93,8 +92,8 @@ extract:
 	tar -xvf hd.tgz
 
 KIMG:
-	@echo '正在生成Cosmos内核映像文件，请稍后……'
-	$(CD) $(CPLILDR_PATH) && $(LKIMG) -lhf $(INITLDRIMH) -o Cosmos.eki -f $(LKIMG_INFILE)
+	@echo 'Generating minOS image file, please wait...'
+	$(CD) $(CPLILDR_PATH) && $(LKIMG) -lhf $(INITLDRIMH) -o miniOS.eki -f $(LKIMG_INFILE)
 
 KVMRUN:
 	$(VM) $(VMFLAGES)

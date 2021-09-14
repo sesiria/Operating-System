@@ -50,12 +50,14 @@ void init_bstartparm()
     machbstart_t_init(mbsp);
     init_chkcpu(mbsp);                  // check CPU
     init_mem(mbsp);                     // check memory layout
+    kprint("finished %s\n", __func__);
     if (0 == get_wt_imgfilesz(mbsp))
     {
         kerror("imgfilesz 0");
     }
     init_krlinitstack(mbsp);            // check kernel stack
     init_krlfile(mbsp);                 // place kernel image file
+    kprint("init_defutfont\n");
     init_defutfont(mbsp);               // place font file
     init_meme820(mbsp);                  // init mem820 struct
     init_bstartpages(mbsp);             // init MMU page table

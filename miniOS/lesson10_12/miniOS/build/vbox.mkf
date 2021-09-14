@@ -24,7 +24,7 @@ tranvdi:
 
 moutraw:
 	sudo mount -o loop ../hd.img ../hdisk/
-	sudo cp ../release/Cosmos.eki ../hdisk/boot/
+	sudo cp ../release/miniOS.eki ../hdisk/boot/
 	sudo umount ../hdisk/
 
 	

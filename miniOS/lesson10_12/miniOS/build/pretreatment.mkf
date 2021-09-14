@@ -1,8 +1,8 @@
 MAKEFLAGS = -s
-CCSTR		= 	'CC -[M] 正在生成makefile... '$<
+CCSTR		= 	'CC -[M] generating makefile... '$<
 PRINTCSTR 	=	@echo $(CCSTR) 
 
-CCSTRLMK	= 	'LMKFBUID -[M] 正在生成makefile... '$<
+CCSTRLMK	= 	'LMKFBUID -[M] generating makefile... '$<
 PRINTCSTRLMK 	=	@echo $(CCSTRLMK) 
 
 
@@ -13,7 +13,7 @@ LMKFBUID = ./lmkfbuild
 CC		= gcc
 CPPFLGSLDS	= $(HEADFILE_PATH) -E -P 
 
-PREMENTMKI_OBJS = krnlobjs.mki cosmoslink.lds krnlbuidcmd.mki krnlbuidrule.mki hal.mki krl.mki drv.mki lib.mki task.mki link.mki
+PREMENTMKI_OBJS = krnlobjs.mki minioslink.lds krnlbuidcmd.mki krnlbuidrule.mki hal.mki krl.mki drv.mki lib.mki task.mki link.mki
 PREMENTMK_OBJS = krnlobjs.mk krnlbuidcmd.mk krnlbuidrule.mk hal.mk krl.mk drv.mk lib.mk task.mk link.mk
 .PHONY : all everything everymk build_kernel
 all: build_kernel

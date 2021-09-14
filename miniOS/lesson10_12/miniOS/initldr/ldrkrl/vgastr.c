@@ -7,7 +7,6 @@ __attribute__((section(".data"))) cursor_t curs;
 
 void init_curs()
 {
-
     curs.vmem_s = VGASTR_RAM_BASE;
     curs.vmem_e = VGASTR_RAM_END;
     curs.cvmemadr = 0;

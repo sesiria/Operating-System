@@ -1,10 +1,8 @@
 /**********************************************************
-        开始入口文件hal_start.c
-***********************************************************
-                彭东
+        main system program entry hal_start.c
 **********************************************************/
-#include "cosmostypes.h"
-#include "cosmosmctrl.h"
+#include "miniostypes.h"
+#include "miniosmctrl.h"
 
 void hal_start()
 {

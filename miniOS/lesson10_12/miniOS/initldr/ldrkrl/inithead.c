@@ -5,7 +5,6 @@ void inithead_entry()
     init_curs();
     close_curs();
     clear_screen(VGADP_DFVL);
-
     write_realintsvefile();
     write_ldrkrlfile();
 }

@@ -281,17 +281,17 @@ int chk_cpu_longmode()
 {
     int rets = 0;
     __asm__ __volatile__(
-        "movl   $0x80000000, %%eax  \n\t"
-        "cpuid  \n\t"                           // move 0x80000000 to eax and run CPUID instruction
-        "cmpl   $0x80000001, %%eax  \n\t"       // check the ret val from eax
-        "setnb  %%al    \n\t"                   // not equal to 0x80000001, then it doesn't support 0x80000001
-        "jb     1f      \n\t"
-        "movl   $0x80000001, %%eax  \n\t"
-        "cpuid  \n\t"                           // move 0x80000001 to eax and call CPUID and check ret val from edx
-        "bt     $29,        %%edx   \n\t"       // long mode support bit
-        "setcb  %%al    \n\t"
-        "1:     \n\t"
-        "movzx  %%al,       %%eax   \n\t"
+        "movl $0x80000000,%%eax \n\t"
+        "cpuid \n\t"
+        "cmpl $0x80000001,%%eax \n\t"
+        "setnb %%al \n\t"
+        "jb 1f \n\t"
+        "movl $0x80000001,%%eax \n\t"
+        "cpuid \n\t"
+        "bt $29,%%edx  \n\t" // long mode  support bit
+        "setcb %%al \n\t"
+        "1: \n\t"
+        "movzx %%al,%%eax \n\t"
         : "=a"(rets)
         :
         :);

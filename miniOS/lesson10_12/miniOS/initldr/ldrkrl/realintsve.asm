@@ -11,8 +11,7 @@ _16_mode:
     mov     ebp,    cr0
     and     ebp,    0xfffffffe
     mov     cr0,    ebp         ; CR0.P = 0 slove protect mode
-    jmp     0:real_entry        ; refresh CS shador register enter to real mode
-
+    jmp     0:real_entry        ; refresh CS shadow register enter to real mode
 real_entry:
     mov     bp,     CS
     mov     ds,     bp
@@ -48,13 +47,12 @@ DispStr:
     mov     bl,     15
     int     10h                 ; call bios irq #10
     ret
-
 cleardisp:
     mov     ax,     0600h       ; clear screen
     mov     bx,     0700h
     mov     cx,     0
     mov     dx,     0184fh
-    int     10h
+    int     10h                 ; call bios irq #10
     ret
 
 _getmmap:
@@ -63,9 +61,9 @@ _getmmap:
     push    ss
     mov     esi,    0
     mov     dword[E80MAP_NR],       esi
-    mov     dword[E80MAP_ADRADR],   E80MAP_ADR      ;; start address of e820map structure
+    mov     dword[E80MAP_ADRADR],   E80MAP_ADR      ; start address of e820map structure
 
-    xor     ebx,    edx
+    xor     ebx,    ebx
     mov     edi,    E80MAP_ADR
 loop:
     mov     eax,    0e820h          ; get the param of e820map
@@ -94,7 +92,6 @@ loop:
     pop     es
     pop     ds
     ret
-
 _read:
     push    ds
     push    es
@@ -137,7 +134,6 @@ _getvbemode:
     pop     ax
     pop     es
     ret
-
 _getvbeonemodeinfo:
     push    es
     push    ax
@@ -160,7 +156,6 @@ _getvbeonemodeinfo:
     pop     ax
     pop     es
     ret
-
 _setvbemode:
     push    ax
     push    bx
@@ -176,7 +171,6 @@ _setvbemode:
     pop     bx
     pop     ax
     ret
-
 disable_nmi:
     push    ax
     in      al,     0x70    ; port 0x70NMI_EN_PORT
@@ -191,6 +185,7 @@ func_table:
     dw      _getvbemode
     dw      _getvbeonemodeinfo
     dw      _setvbemode
+
 
 int131errmsg:           db     "int 13 read hdsk  err"
                         db      0
